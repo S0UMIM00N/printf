@@ -1,10 +1,52 @@
 #include "main.h"
 
 /**
- * printf - function that produces output according to a format
- * @format : character string 
+ * _printf - function that produces output according to a format
+ * @format: character string
  * owned by karkazou & S0UMIM00N
- * return : counter of char
+ * Return: counter of char
  */
 
+int _printf(const char *format, ...)
+{
+    int result = 0;
+    va_list handle;
 
+    va_start(handle, format);
+    if (!format || (format[0] == '%' && !format[1]))
+        return (-1);
+    if (format[0] == '%' && format[1] == ' ' && !format[2])
+        return (-1);
+    while (*format != '\0')
+    {
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+            case 'c':
+                result += printf_char(handle);
+                break;
+            case 's':
+                result += printf_string(handle);
+                break;
+            case '%':
+                _putchar('%');
+                result++;
+                break;
+            default:
+                _putchar('%');
+                _putchar(*format);
+                result += 2;
+            }
+        }
+        else
+        {
+            _putchar(*format);
+            result++;
+        }
+        format++;
+    }
+    va_end(handle);
+    return (result);
+}

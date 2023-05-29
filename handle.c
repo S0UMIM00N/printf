@@ -11,7 +11,7 @@
 
 int _putchar(char c)
 {
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -22,13 +22,13 @@ int _putchar(char c)
 
 int printf_char(va_list handle)
 {
-    char c;
+	char c;
 
-    c = va_arg(handle, int);
+	c = va_arg(handle, int);
 
-    _putchar(c);
+	_putchar(c);
 
-    return (1);
+	return (1);
 }
 
 /**
@@ -39,24 +39,24 @@ int printf_char(va_list handle)
 
 int printf_string(va_list handle)
 {
-    char *s;
-    int i = 0;
+	char *s;
+	int i = 0;
 
-    s = va_arg(handle, char *);
+	s = va_arg(handle, char *);
 
-    if (s == NULL)
-    {
-        write(1, "(null)", 6);
-        return (6);
-    }
-    else
-    {
-        while (*s)
-        {
-            _putchar(*s);
-            i++;
-            s++;
-        }
-    }
-    return (i);
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	else
+	{
+		while (*s)
+		{
+			_putchar(*s);
+			i++;
+			s++;
+		}
+	}
+	return (i);
 }

@@ -22,23 +22,7 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
             format++;
-            switch (*format)
-            {
-            case 'c':
-                result += printf_char(handle);
-                break;
-            case 's':
-                result += printf_string(handle);
-                break;
-            case '%':
-                _putchar('%');
-                result++;
-                break;
-            default:
-                _putchar('%');
-                _putchar(*format);
-                result += 2;
-            }
+            result += switch_char(handle, *format);
         }
         else
         {

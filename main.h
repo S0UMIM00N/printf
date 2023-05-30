@@ -12,8 +12,9 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void flush_output(char output[], int *output_index);
 int printf_char(va_list handle);
 int printf_string(va_list handle);
+int switch_char(va_list handle, char cara);
+int printf_int(va_list handle);
 
 #endif
